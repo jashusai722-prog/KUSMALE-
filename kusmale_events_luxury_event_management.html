@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KUSMALE Events - Premier luxury event management agency creating unforgettable weddings, corporate galas, concerts, and private celebrations.">
+    <title>KUSMALE EVENTS | Luxury Event Management & Bespoke Experiences</title>
+    
+    <!-- Google Fonts: Cinzel, Cormorant Garamond, Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#171717',
+                        obsidianLight: '#222222',
+                        obsidianDark: '#0D0D0D',
+                        gold: '#C5A45D',
+                        goldLight: '#DFC588',
+                        goldDark: '#9E7F3B',
+                        cream: '#F8F6F2',
+                        champagne: '#EFECE6'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ==========================================================================
+           CUSTOM LUXURY STYLES, KEYFRAMES & GLASSMORPHISM
+           ========================================================================== */
+        :root {
+            --color-obsidian: #171717;
+            --color-gold: #C5A45D;
+            --color-cream: #F8F6F2;
+        }
+
+        body {
+            background-color: var(--color-obsidian);
+            color: var(--color-cream);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #171717;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A45D;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #DFC588;
+        }
+
+        /* Preloader Curtain */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background-color: #0D0D0D;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.8s;
+        }
+        #preloader.loaded {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .loader-line {
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #C5A45D, transparent);
+            animation: expandLine 1.5s ease-in-out forwards;
+        }
+        @keyframes expandLine {
+            0% { width: 0%; }
+            100% { width: 220px; }
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-dark {
+            background: rgba(23, 23, 23, 0.72);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(197, 164, 93, 0.22);
+        }
+        .glass-card {
+            background: linear-gradient(145deg, rgba(34, 34, 34, 0.85), rgba(20, 20, 20, 0.95));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(197, 164, 93, 0.18);
+            transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .glass-card:hover {
+            border-color: rgba(197, 164, 93, 0.65);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(197, 164, 93, 0.15);
+        }
+
+        /* Animated Gold Gradient Text */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #F3E5AB 0%, #C5A45D 50%, #9E7F3B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Button Glow & Shimmer */
+        .btn-gold {
+            background: linear-gradient(135deg, #C5A45D 0%, #DFC588 50%, #B39149 100%);
+            background-size: 200% auto;
+            color: #171717;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(197, 164, 93, 0.3);
+        }
+        .btn-gold:hover {
+            background-position: right center;
+            box-shadow: 0 6px 28px rgba(197, 164, 93, 0.55);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-gold {
+            border: 1px solid #C5A45D;
+            color: #F8F6F2;
+            background: rgba(23, 23, 23, 0.4);
+            backdrop-filter: blur(6px);
+            transition: all 0.35s ease;
+        }
+        .btn-outline-gold:hover {
+            background: #C5A45D;
+            color: #171717;
+            box-shadow: 0 0 20px rgba(197, 164, 93, 0.4);
+        }
+
+        /* Navigation Animated Underline */
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0%;
+            height: 1.5px;
+            background-color: #C5A45D;
+            transition: all 0.35s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Hero Parallax & Reveal Animations */
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1920&q=85');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-18px) rotate(3deg); }
+        }
+        .animate-float {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: floatSlow 8s ease-in-out 2s infinite;
+        }
+
+        /* Scroll Reveal Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Image Zoom Effect */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom-container img {
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .group:hover .img-zoom-container img {
+            transform: scale(1.09);
+        }
+
+        /* Masonry Gallery */
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 640px) {
+            .masonry-grid { column-count: 2; }
+        }
+        @media (min-width: 1024px) {
+            .masonry-grid { column-count: 3; }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Floating Input Labels & Focus */
+        .luxury-input {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(197, 164, 93, 0.25);
+            color: #F8F6F2;
+            transition: all 0.3s ease;
+        }
+        .luxury-input:focus {
+            outline: none;
+            border-color: #C5A45D;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(197, 164, 93, 0.2);
+        }
+        .luxury-input option {
+            background-color: #171717;
+            color: #F8F6F2;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold selection:text-obsidian">
+
+    <!-- ==========================================================================
+         PAGE PRELOADER
+         ========================================================================== -->
+    <div id="preloader" aria-hidden="true">
+        <div class="text-center">
+            <div class="w-14 h-14 mx-auto mb-4 border border-gold rounded-full flex items-center justify-center animate-pulse">
+                <span class="font-cinzel text-2xl text-gold font-bold">K</span>
+            </div>
+            <h2 class="font-cinzel text-xl tracking-[0.35em] text-cream uppercase mb-3">KUSMALE Events</h2>
+            <div class="loader-line mx-auto"></div>
+            <p class="text-xs tracking-widest text-gold/80 mt-3 uppercase">Curating Timeless Luxury</p>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         STICKY NAVIGATION BAR
+         ========================================================================== -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-4 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Company Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full border border-gold flex items-center justify-center bg-obsidian/80 group-hover:bg-gold transition-colors duration-300">
+                    <span class="font-cinzel text-lg font-bold text-gold group-hover:text-obsidian transition-colors">K</span>
+                </div>
+                <div>
+                    <span class="font-cinzel text-lg sm:text-xl font-bold tracking-[0.2em] text-cream block leading-none">KUSMALE</span>
+                    <span class="text-[10px] tracking-[0.32em] text-gold uppercase block mt-1">Bespoke Events</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-7 text-sm tracking-wider uppercase font-medium">
+                <a href="#home" class="nav-link text-cream hover:text-gold transition-colors">Home</a>
+                <a href="#services" class="nav-link text-cream hover:text-gold transition-colors">Services</a>
+                <a href="#events" class="nav-link text-cream hover:text-gold transition-colors">Events</a>
+                <a href="#packages" class="nav-link text-cream hover:text-gold transition-colors">Packages</a>
+                <a href="#about" class="nav-link text-cream hover:text-gold transition-colors">About Us</a>
+                <a href="#contact" class="nav-link text-cream hover:text-gold transition-colors">Contact</a>
+            </nav>
+
+            <!-- CTA & Mobile Hamburger -->
+            <div class="flex items-center gap-4">
+                <a href="#booking" class="hidden sm:inline-flex items-center gap-2 btn-gold px-5 py-2.5 rounded-full text-xs uppercase tracking-widest">
+                    <span>Book an Event</span>
+                    <i class="fa-solid fa-sparkles text-[10px]"></i>
+                </a>
+                
+                <!-- Hamburger Button -->
+                <button id="mobile-menu-btn" aria-label="Toggle Menu" class="lg:hidden w-11 h-11 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold hover:text-obsidian transition-colors">
+                    <i class="fa-solid fa-bars text-lg" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Slide-down Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden mt-4 mx-auto max-w-7xl glass-dark rounded-2xl p-6 border border-gold/30 shadow-2xl">
+            <nav class="flex flex-col space-y-4 text-center uppercase tracking-widest text-sm">
+                <a href="#home" class="mobile-link py-2 text-cream hover:text-gold border-b border-white/5">Home</a>
+                <a href="#services" class="mobile-link py-2 text-cream hover:text-gold border-b border-white/5">Services</a>
+                <a href="#events" class="mobile-link py-2 text-cream hover:text-gold border-b border-white/5">Events</a>
+                <a href="#packages" class="mobile-link py-2 text-cream hover:text-gold border-b border-white/5">Packages</a>
+                <a href="#about" class="mobile-link py-2 text-cream hover:text-gold border-b border-white/5">About Us</a>
+                <a href="#contact" class="mobile-link py-2 text-cream hover:text-gold">Contact</a>
+                <a href="#booking" class="mobile-link btn-gold py-3 rounded-full text-xs font-bold mt-2">Book an Event</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden pt-20">
+        <!-- Dark Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-obsidian/85 via-obsidian/70 to-obsidian"></div>
+        
+        <!-- Interactive Floating Particles Canvas -->
+        <canvas id="gold-particles" class="absolute inset-0 pointer-events-none z-10"></canvas>
+
+        <!-- Floating Decorative Elements -->
+        <div class="hidden md:block absolute top-1/4 left-12 w-24 h-24 rounded-full border border-gold/25 animate-float pointer-events-none z-10"></div>
+        <div class="hidden md:block absolute bottom-1/3 right-16 w-32 h-32 rounded-full border border-gold/20 animate-float-delayed pointer-events-none z-10"></div>
+
+        <!-- Hero Content -->
+        <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark border border-gold/40 mb-6 reveal">
+                <span class="w-2 h-2 rounded-full bg-gold animate-ping"></span>
+                <span class="text-xs uppercase tracking-[0.28em] text-gold font-medium">Premier Luxury Event Architects</span>
+            </div>
+
+            <h1 class="font-cinzel text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wider leading-tight text-cream mb-6 reveal">
+                WE CREATE <span class="text-gold-gradient">MOMENTS</span> THAT LAST FOREVER
+            </h1>
+
+            <p class="font-serif italic text-xl sm:text-2xl md:text-3xl text-champagne/90 max-w-3xl mx-auto mb-10 leading-relaxed reveal">
+                From unforgettable celebrations to extraordinary experiences, we bring your vision to life.
+            </p>
+
+            <!-- Hero Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 reveal">
+                <a href="#events" class="w-full sm:w-auto btn-gold px-8 py-4 rounded-full text-xs sm:text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-3">
+                    <span>Explore Our Events</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#booking" class="w-full sm:w-auto btn-outline-gold px-8 py-4 rounded-full text-xs sm:text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-3">
+                    <i class="fa-regular fa-calendar-check text-gold"></i>
+                    <span>Plan Your Event</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Down Indicator -->
+        <a href="#services" aria-label="Scroll to services" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-gold/80 hover:text-gold transition-colors">
+            <span class="text-[10px] uppercase tracking-[0.3em]">Discover</span>
+            <div class="w-6 h-10 rounded-full border border-gold/50 flex justify-center p-1.5">
+                <div class="w-1 h-2.5 bg-gold rounded-full animate-bounce"></div>
+            </div>
+        </a>
+    </section>
+
+    <!-- ==========================================================================
+         OUR EVENT SERVICES
+         ========================================================================== -->
+    <section id="services" class="py-24 px-4 sm:px-8 bg-obsidian relative">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold font-semibold">Bespoke Craftsmanship</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-cream mt-3 mb-4">Our Event Services</h2>
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-5"></div>
+                <p class="text-cream/75 text-sm sm:text-base leading-relaxed">
+                    Every occasion deserves meticulous artistry. Discover our curated suite of luxury event planning and production services tailored to perfection.
+                </p>
+            </div>
+
+            <!-- 8 Service Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7" id="services-grid">
+                <!-- Service 1: Wedding Planning -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal">
+                    <div class="relative h-52 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Wedding Planning" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Wedding+Planning'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                        <div class="absolute top-3 right-3 w-10 h-10 rounded-full glass-dark flex items-center justify-center text-gold border border-gold/40">
+                            <i class="fa-solid fa-rings-wedding"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-semibold text-cream mb-2 group-hover:text-gold transition-colors">Wedding Planning</h3>
+                        <p class="text-cream/70 text-sm leading-relaxed mb-5 flex-1">
+                            Fairy-tale destination weddings, royal floral mandaps, and seamless multi-day hospitality curated with grace.
+                        </p>
+                        <button onclick="openServiceModal('Wedding Planning', 'From intimate vows to grand royal celebrations, we handle venue scouting, couture decor, guest logistics, and custom entertainment.', 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80')" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gold font-semibold hover:text-goldLight transition-colors self-start">
+                            <span>Learn More</span>
+                            <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 2: Birthday Celebrations -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal">
+                    <div class="relative h-52 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=80" alt="Birthday Celebrations" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Birthday+Celebrations'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                        <div class="absolute top-3 right-3 w-10 h-10 rounded-full glass-dark flex items-center justify-center text-gold border border-gold/40">
+                            <i class="fa-solid fa-cake-candles"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-semibold text-cream mb-2 group-hover:text-gold transition-colors">Birthday Celebrations</h3>
+                        <p class="text-cream/70 text-sm leading-relaxed mb-5 flex-1">
+                            Milestone soirées, bespoke themed galas, gourmet mixology bars, and unforgettable entertainment for all ages.
+                        </p>
+                        <button onclick="openServiceModal('Birthday Celebrations', 'Celebrate milestones in opulent style with custom themes, artisanal cakes, live DJs, and immersive photo lounges.', 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=1000&q=80')" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gold font-semibold hover:text-goldLight transition-colors self-start">
+                            <span>Learn More</span>
+                            <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 3: Corporate Events -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal">
+                    <div class="relative h-52 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Corporate Events" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Corporate+Events'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                        <div class="absolute top-3 right-3 w-10 h-10 rounded-full glass-dark flex items-center justify-center text-gold border border-gold/40">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-semibold text-cream mb-2 group-hover:text-gold transition-colors">Corporate Events</h3>
+                        <p class="text-cream/70 text-sm leading-relaxed mb-5 flex-1">
+                            Executive summits, annual award galas, and global brand conferences executed with precision and prestige.
+                        </p>
+                        <button onclick="openServiceModal('Corporate Events', 'Elevate your brand authority with state-of-the-art AV production, executive hospitality, and flawless stage direction.', 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1000&q=80')" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gold font-semibold hover:text-goldLight transition-colors self-start">
+                            <span>Learn More</span>
+                            <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 4: Engagement Ceremonies -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal">
+                    <div class="relative h-52 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80" alt="Engagement Ceremonies" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Engagement+Ceremonies'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                        <div class="absolute top-3 right-3 w-10 h-10 rounded-full glass-dark flex items-center justify-center text-gold border border-gold/40">
+                            <i class="fa-regular fa-gem"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-semibold text-cream mb-2 group-hover:text-gold transition-colors">Engagement Ceremonies</h3>
+                        <p class="text-cream/70 text-sm leading-relaxed mb-5 flex-1">
+                            Romantic candlelit ring ceremonies, lush botanical arches, and intimate family toasts crafted to perfection.
+                        </p>
+                        <button onclick="openServiceModal('Engagement Ceremonies', 'Begin your forever story surrounded by cascading florals, bespoke mood lighting, and curated acoustic melodies.', 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1000&q=80')" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gold font-semibold hover:text-goldLight transition-colors self-start">
+                            <span>Learn More</span>
+                            <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 5: Concerts & Music Events -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal">
+                    <div class="relative h-52 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80" alt="Concerts & Music Events" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Concerts+%26+Music'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                        <div class="absolute top-3 right-3 w-10 h-10 rounded-full glass-dark flex items-center justify-center text-gold border border-gold/40">
+                            <i class="fa-solid fa-music"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-semibold text-cream mb-2 group-hover:text-gold transition-colors">Concerts & Music Events</h3>
+                        <p class="text-cream/70 text-sm leading-relaxed mb-5 flex-1">
+                            Arena acoustics, pyrotechnic stage choreography, VIP backstage lounges, and seamless crowd management.
+                        </p>
+                        <button onclick="openServiceModal('Concerts & Music Events', 'High-impact live concerts and symphony nights featuring concert-grade sound engineering, intelligent lighting rigs, and artist hospitality.', 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1000&q=80')" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gold font-semibold hover:text-goldLight transition-colors self-start">
+                            <span>Learn More</span>
+                            <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 6: Private Parties -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal">
+                    <div class="relative h-52 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" alt="Private Parties" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Private+Parties'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                        <div class="absolute top-3 right-3 w-10 h-10 rounded-full glass-dark flex items-center justify-center text-gold border border-gold/40">
+                            <i class="fa-solid fa-champagne-glasses"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-semibold text-cream mb-2 group-hover:text-gold transition-colors">Private Parties</h3>
+                        <p class="text-cream/70 text-sm leading-relaxed mb-5 flex-1">
+                            Exclusive yacht soirées, penthouse cocktail nights, and discreet celebrity gatherings with velvet-rope service.
+                        </p>
+                        <button onclick="openServiceModal('Private Parties', 'Bespoke private celebrations designed with strict confidentiality, Michelin-inspired catering, and world-class mixologists.', 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1000&q=80')" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gold font-semibold hover:text-goldLight transition-colors self-start">
+                            <span>Learn More</span>
+                            <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 7: Product Launches -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal">
+                    <div class="relative h-52 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80" alt="Product Launches" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Product+Launches'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                        <div class="absolute top-3 right-3 w-10 h-10 rounded-full glass-dark flex items-center justify-center text-gold border border-gold/40">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-semibold text-cream mb-2 group-hover:text-gold transition-colors">Product Launches</h3>
+                        <p class="text-cream/70 text-sm leading-relaxed mb-5 flex-1">
+                            Theatrical unveilings, 3D projection mapping, press media walls, and interactive brand storytelling experiences.
+                        </p>
+                        <button onclick="openServiceModal('Product Launches', 'Make headlines with dramatic product reveals, influencer previews, and interactive experiential brand installations.', 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1000&q=80')" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gold font-semibold hover:text-goldLight transition-colors self-start">
+                            <span>Learn More</span>
+                            <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 8: Festivals & Exhibitions -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal">
+                    <div class="relative h-52 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=800&q=80" alt="Festivals & Exhibitions" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Festivals+%26+Exhibitions'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                        <div class="absolute top-3 right-3 w-10 h-10 rounded-full glass-dark flex items-center justify-center text-gold border border-gold/40">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-semibold text-cream mb-2 group-hover:text-gold transition-colors">Festivals & Exhibitions</h3>
+                        <p class="text-cream/70 text-sm leading-relaxed mb-5 flex-1">
+                            Cultural showcases, luxury art expos, architectural pavilion builds, and multi-venue festival curation.
+                        </p>
+                        <button onclick="openServiceModal('Festivals & Exhibitions', 'Large-scale cultural festivals and curated luxury trade exhibitions with custom spatial architecture and exhibitor support.', 'https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1000&q=80')" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gold font-semibold hover:text-goldLight transition-colors self-start">
+                            <span>Learn More</span>
+                            <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         UPCOMING EVENTS (WITH CATEGORY FILTER)
+         ========================================================================== -->
+    <section id="events" class="py-24 px-4 sm:px-8 bg-obsidianDark relative border-y border-gold/15">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold font-semibold">Signature Calendar</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-cream mt-3 mb-4">Upcoming Events</h2>
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-5"></div>
+                <p class="text-cream/75 text-sm sm:text-base">
+                    Reserve your passes for our upcoming curated showcases, symphony nights, bridal expos, and VIP galas.
+                </p>
+            </div>
+
+            <!-- Interactive Category Filters -->
+            <div class="flex flex-wrap items-center justify-center gap-3 mb-12 reveal" id="event-filters">
+                <button data-filter="all" class="filter-btn active px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all bg-gold text-obsidian shadow-lg">
+                    All Events
+                </button>
+                <button data-filter="weddings" class="filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all glass-dark text-cream hover:border-gold">
+                    Weddings
+                </button>
+                <button data-filter="music" class="filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all glass-dark text-cream hover:border-gold">
+                    Music
+                </button>
+                <button data-filter="corporate" class="filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all glass-dark text-cream hover:border-gold">
+                    Corporate
+                </button>
+                <button data-filter="parties" class="filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all glass-dark text-cream hover:border-gold">
+                    Parties
+                </button>
+            </div>
+
+            <!-- Upcoming Events Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="events-grid">
+                <!-- Event 1 -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group flex flex-col" data-category="weddings">
+                    <div class="relative h-60 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80" alt="Royal Bridal Couture Showcase" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Bridal+Showcase'">
+                        <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-gold text-obsidian text-[11px] font-bold uppercase tracking-widest">Weddings</span>
+                        <div class="absolute bottom-3 right-3 px-3 py-1 rounded-lg glass-dark text-gold font-semibold text-sm border border-gold/30">
+                            ₹9,999 / VIP Pass
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-bold text-cream mb-3 group-hover:text-gold transition-colors">The Royal Bridal Couture Showcase</h3>
+                        <div class="space-y-2 text-xs text-cream/75 mb-6">
+                            <p class="flex items-center gap-2.5"><i class="fa-regular fa-calendar text-gold w-4"></i> December 14, 2026</p>
+                            <p class="flex items-center gap-2.5"><i class="fa-regular fa-clock text-gold w-4"></i> 06:00 PM – 11:00 PM</p>
+                            <p class="flex items-center gap-2.5"><i class="fa-solid fa-location-dot text-gold w-4"></i> The Grand Imperial Ballroom, NY</p>
+                        </div>
+                        <button onclick="prefillBooking('Wedding Planning', 'The Royal Bridal Couture Showcase')" class="mt-auto w-full btn-outline-gold py-3 rounded-xl text-xs uppercase tracking-widest font-semibold">
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group flex flex-col" data-category="music">
+                    <div class="relative h-60 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=800&q=80" alt="Symphony Under The Stars" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Symphony+Concert'">
+                        <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-gold text-obsidian text-[11px] font-bold uppercase tracking-widest">Music</span>
+                        <div class="absolute bottom-3 right-3 px-3 py-1 rounded-lg glass-dark text-gold font-semibold text-sm border border-gold/30">
+                            ₹14,999 / Ticket
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-bold text-cream mb-3 group-hover:text-gold transition-colors">Candlelight Symphony & Orchestra Gala</h3>
+                        <div class="space-y-2 text-xs text-cream/75 mb-6">
+                            <p class="flex items-center gap-2.5"><i class="fa-regular fa-calendar text-gold w-4"></i> December 22, 2026</p>
+                            <p class="flex items-center gap-2.5"><i class="fa-regular fa-clock text-gold w-4"></i> 08:00 PM – 11:30 PM</p>
+                            <p class="flex items-center gap-2.5"><i class="fa-solid fa-location-dot text-gold w-4"></i> KUSMALE Amphitheater Gardens</p>
+                        </div>
+                        <button onclick="prefillBooking('Concerts & Music Events', 'Candlelight Symphony & Orchestra Gala')" class="mt-auto w-full btn-outline-gold py-3 rounded-xl text-xs uppercase tracking-widest font-semibold">
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group flex flex-col" data-category="corporate">
+                    <div class="relative h-60 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" alt="Global Luxury Leadership Summit" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Leadership+Summit'">
+                        <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-gold text-obsidian text-[11px] font-bold uppercase tracking-widest">Corporate</span>
+                        <div class="absolute bottom-3 right-3 px-3 py-1 rounded-lg glass-dark text-gold font-semibold text-sm border border-gold/30">
+                            ₹28,500 / Delegate
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-bold text-cream mb-3 group-hover:text-gold transition-colors">Global Luxury & Innovation Summit</h3>
+                        <div class="space-y-2 text-xs text-cream/75 mb-6">
+                            <p class="flex items-center gap-2.5"><i class="fa-regular fa-calendar text-gold w-4"></i> January 15, 2027</p>
+                            <p class="flex items-center gap-2.5"><i class="fa-regular fa-clock text-gold w-4"></i> 09:30 AM – 05:00 PM</p>
+                            <p class="flex items-center gap-2.5"><i class="fa-solid fa-location-dot text-gold w-4"></i> The Ritz-Carlton Grand Pavilion</p>
+                        </div>
+                        <button onclick="prefillBooking('Corporate Events', 'Global Luxury & Innovation Summit')" class="mt-auto w-full btn-outline-gold py-3 rounded-xl text-xs uppercase tracking-widest font-semibold">
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group flex flex-col" data-category="parties">
+                    <div class="relative h-60 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="Midnight Gold Masquerade" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Midnight+Masquerade'">
+                        <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-gold text-obsidian text-[11px] font-bold uppercase tracking-widest">Parties</span>
+                        <div class="absolute bottom-3 right-3 px-3 py-1 rounded-lg glass-dark text-gold font-semibold text-sm border border-gold/30">
+                            ₹19,999 / Entry
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-bold text-cream mb-3 group-hover:text-gold transition-colors">Midnight Gold New Year Masquerade</h3>
+                        <div class="space-y-2 text-xs text-cream/75 mb-6">
+                            <p class="flex items-center gap-2.5"><i class="fa-regular fa-calendar text-gold w-4"></i> December 31, 2026</p>
+                            <p class="flex items-center gap-2.5"><i class="fa-regular fa-clock text-gold w-4"></i> 09:00 PM – 03:00 AM</p>
+                            <p class="flex items-center gap-2.5"><i class="fa-solid fa-location-dot text-gold w-4"></i> SkyLounge Penthouse Terrace</p>
+                        </div>
+                        <button onclick="prefillBooking('Private Parties', 'Midnight Gold New Year Masquerade')" class="mt-auto w-full btn-outline-gold py-3 rounded-xl text-xs uppercase tracking-widest font-semibold">
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Event 5 -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group flex flex-col" data-category="music">
+                    <div class="relative h-60 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Velvet Jazz & Champagne Night" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Jazz+Night'">
+                        <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-gold text-obsidian text-[11px] font-bold uppercase tracking-widest">Music</span>
+                        <div class="absolute bottom-3 right-3 px-3 py-1 rounded-lg glass-dark text-gold font-semibold text-sm border border-gold/30">
+                            ₹7,999 / Guest
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-bold text-cream mb-3 group-hover:text-gold transition-colors">Velvet Jazz & Vintage Champagne Night</h3>
+                        <div class="space-y-2 text-xs text-cream/75 mb-6">
+                            <p class="flex items-center gap-2.5"><i class="fa-regular fa-calendar text-gold w-4"></i> January 24, 2027</p>
+                            <p class="flex items-center gap-2.5"><i class="fa-regular fa-clock text-gold w-4"></i> 07:30 PM – 12:00 AM</p>
+                            <p class="flex items-center gap-2.5"><i class="fa-solid fa-location-dot text-gold w-4"></i> The Conservatory Speakeasy</p>
+                        </div>
+                        <button onclick="prefillBooking('Concerts & Music Events', 'Velvet Jazz & Vintage Champagne Night')" class="mt-auto w-full btn-outline-gold py-3 rounded-xl text-xs uppercase tracking-widest font-semibold">
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Event 6 -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group flex flex-col" data-category="weddings">
+                    <div class="relative h-60 img-zoom-container">
+                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80" alt="Destination Villa Wedding Expo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Villa+Wedding+Expo'">
+                        <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-gold text-obsidian text-[11px] font-bold uppercase tracking-widest">Weddings</span>
+                        <div class="absolute bottom-3 right-3 px-3 py-1 rounded-lg glass-dark text-gold font-semibold text-sm border border-gold/30">
+                            Free Entry (RSVP)
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-cinzel text-xl font-bold text-cream mb-3 group-hover:text-gold transition-colors">Tuscan Villa Destination Wedding Expo</h3>
+                        <div class="space-y-2 text-xs text-cream/75 mb-6">
+                            <p class="flex items-center gap-2.5"><i class="fa-regular fa-calendar text-gold w-4"></i> February 08, 2027</p>
+                            <p class="flex items-center gap-2.5"><i class="fa-regular fa-clock text-gold w-4"></i> 11:00 AM – 06:00 PM</p>
+                            <p class="flex items-center gap-2.5"><i class="fa-solid fa-location-dot text-gold w-4"></i> KUSMALE Design Atelier</p>
+                        </div>
+                        <button onclick="prefillBooking('Wedding Planning', 'Tuscan Villa Destination Wedding Expo')" class="mt-auto w-full btn-outline-gold py-3 rounded-xl text-xs uppercase tracking-widest font-semibold">
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         EVENT PACKAGES & PRICING
+         ========================================================================== -->
+    <section id="packages" class="py-24 px-4 sm:px-8 bg-obsidian relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold font-semibold">Tailored Collections</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-cream mt-3 mb-4">Event Packages & Pricing</h2>
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-5"></div>
+                <p class="text-cream/75 text-sm sm:text-base">
+                    Transparent, customizable luxury tiers designed to match the scale and ambition of your celebration.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Silver Package -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col reveal">
+                    <div class="mb-6">
+                        <span class="text-xs uppercase tracking-[0.25em] text-cream/60">Essential Elegance</span>
+                        <h3 class="font-cinzel text-2xl font-bold text-cream mt-1">Silver Package</h3>
+                        <div class="mt-4 flex items-baseline gap-1">
+                            <span class="font-cinzel text-4xl font-bold text-gold">₹2,00,000</span>
+                            <span class="text-xs text-cream/60">/ starting</span>
+                        </div>
+                    </div>
+                    <div class="w-full h-px bg-white/10 mb-6"></div>
+                    <ul class="space-y-4 text-sm text-cream/85 mb-8 flex-1">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Basic decoration & floral centerpieces</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Day-of event coordination</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Standard ambient lighting setup</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Basic photography coverage (4 hours)</span>
+                        </li>
+                    </ul>
+                    <button onclick="selectPackage('Silver Package (₹2,00,000)')" class="w-full btn-outline-gold py-3.5 rounded-full text-xs uppercase tracking-widest font-semibold">
+                        Book Package
+                    </button>
+                </div>
+
+                <!-- Gold Package (Most Popular) -->
+                <div class="relative rounded-3xl p-8 flex flex-col bg-gradient-to-b from-[#2A2418] to-[#171717] border-2 border-gold shadow-[0_0_45px_rgba(197,164,93,0.22)] lg:-translate-y-4 reveal">
+                    <!-- Popular Badge -->
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1 rounded-full bg-gold text-obsidian text-[11px] font-bold uppercase tracking-[0.2em] shadow-lg whitespace-nowrap">
+                        <i class="fa-solid fa-crown mr-1"></i> Most Popular
+                    </div>
+
+                    <div class="mb-6 mt-2">
+                        <span class="text-xs uppercase tracking-[0.25em] text-gold">Signature Experience</span>
+                        <h3 class="font-cinzel text-2xl sm:text-3xl font-bold text-cream mt-1">Gold Package</h3>
+                        <div class="mt-4 flex items-baseline gap-1">
+                            <span class="font-cinzel text-4xl sm:text-5xl font-bold text-gold-gradient">₹5,00,000</span>
+                            <span class="text-xs text-cream/60">/ starting</span>
+                        </div>
+                    </div>
+                    <div class="w-full h-px bg-gold/30 mb-6"></div>
+                    <ul class="space-y-4 text-sm text-cream mb-8 flex-1">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Premium custom decoration & stage styling</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Full end-to-end event planning</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Professional photography & highlight reel</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Live DJ and intelligent mood lighting</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Gourmet catering coordination & tasting</span>
+                        </li>
+                    </ul>
+                    <button onclick="selectPackage('Gold Package (₹5,00,000)')" class="w-full btn-gold py-4 rounded-full text-xs uppercase tracking-widest font-bold">
+                        Book Package
+                    </button>
+                </div>
+
+                <!-- Platinum Package -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col reveal">
+                    <div class="mb-6">
+                        <span class="text-xs uppercase tracking-[0.25em] text-gold/80">Royal Bespoke</span>
+                        <h3 class="font-cinzel text-2xl font-bold text-cream mt-1">Platinum Package</h3>
+                        <div class="mt-4 flex items-baseline gap-1">
+                            <span class="font-cinzel text-4xl font-bold text-gold">₹10,00,000+</span>
+                            <span class="text-xs text-cream/60">/ bespoke</span>
+                        </div>
+                    </div>
+                    <div class="w-full h-px bg-white/10 mb-6"></div>
+                    <ul class="space-y-4 text-sm text-cream/85 mb-8 flex-1">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Luxury architectural event design & florals</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Complete white-glove event management</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Premium editorial photography & cinema 4K video</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Live orchestra, headline artists & entertainment</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>VIP concierge, security & valet arrangements</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>100% personalized bespoke event experience</span>
+                        </li>
+                    </ul>
+                    <button onclick="selectPackage('Platinum Package (₹10,00,000+)')" class="w-full btn-outline-gold py-3.5 rounded-full text-xs uppercase tracking-widest font-semibold">
+                        Book Package
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         GALLERY SECTION (MASONRY + LIGHTBOX)
+         ========================================================================== -->
+    <section id="gallery" class="py-24 px-4 sm:px-8 bg-obsidianDark border-t border-gold/15">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold font-semibold">Visual Portfolio</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-cream mt-3 mb-4">Curated Masterpieces</h2>
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-5"></div>
+                <p class="text-cream/75 text-sm sm:text-base">
+                    Click any photograph to inspect our bespoke stage designs, floral artistry, and unforgettable celebrations in full resolution.
+                </p>
+            </div>
+
+            <!-- Masonry Grid -->
+            <div class="masonry-grid">
+                <!-- Gallery Item 1 -->
+                <div class="masonry-item group relative rounded-2xl overflow-hidden cursor-pointer border border-gold/20 reveal" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=85', 'Royal Chandelier Wedding Reception')">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Wedding Decorations" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/800x1000/171717/C5A45D?text=Wedding+Decorations'">
+                    <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase tracking-widest text-gold">Wedding Decorations</span>
+                        <h4 class="font-cinzel text-lg font-bold text-cream">Royal Chandelier Reception</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="masonry-item group relative rounded-2xl overflow-hidden cursor-pointer border border-gold/20 reveal" onclick="openLightbox('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1400&q=85', 'Arena Concert Lighting & Stage Design')">
+                    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80" alt="Concerts" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Concert+Stage'">
+                    <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase tracking-widest text-gold">Concerts</span>
+                        <h4 class="font-cinzel text-lg font-bold text-cream">Symphony & Arena Stage Design</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="masonry-item group relative rounded-2xl overflow-hidden cursor-pointer border border-gold/20 reveal" onclick="openLightbox('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1400&q=85', 'Cascading White Orchid Floral Arrangements')">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80" alt="Floral Arrangements" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/800x900/171717/C5A45D?text=Floral+Arrangements'">
+                    <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase tracking-widest text-gold">Floral Arrangements</span>
+                        <h4 class="font-cinzel text-lg font-bold text-cream">White Orchid & Gold Table Scape</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="masonry-item group relative rounded-2xl overflow-hidden cursor-pointer border border-gold/20 reveal" onclick="openLightbox('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=85', 'Executive Corporate Gala Banquet')">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Corporate Events" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/800x650/171717/C5A45D?text=Corporate+Gala'">
+                    <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase tracking-widest text-gold">Corporate Events</span>
+                        <h4 class="font-cinzel text-lg font-bold text-cream">Global Leadership Awards Gala</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="masonry-item group relative rounded-2xl overflow-hidden cursor-pointer border border-gold/20 reveal" onclick="openLightbox('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=1400&q=85', 'Gold & Champagne Milestone Birthday Setup')">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=80" alt="Birthday Setups" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/800x750/171717/C5A45D?text=Birthday+Setup'">
+                    <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase tracking-widest text-gold">Birthday Setups</span>
+                        <h4 class="font-cinzel text-lg font-bold text-cream">Golden Soirée Milestone Lounge</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="masonry-item group relative rounded-2xl overflow-hidden cursor-pointer border border-gold/20 reveal" onclick="openLightbox('https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1400&q=85', 'Bespoke Architectural Stage Design')">
+                    <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=800&q=80" alt="Stage Designs" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/800x600/171717/C5A45D?text=Stage+Design'">
+                    <div class="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase tracking-widest text-gold">Stage Designs</span>
+                        <h4 class="font-cinzel text-lg font-bold text-cream">Grand Illuminated Ceremony Pavilion</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT OUR COMPANY + ANIMATED COUNTERS
+         ========================================================================== -->
+    <section id="about" class="py-24 px-4 sm:px-8 bg-obsidian relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Image Collage -->
+                <div class="lg:col-span-5 relative reveal">
+                    <div class="rounded-3xl overflow-hidden border border-gold/30 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=900&q=85" alt="KUSMALE Luxury Event Production" class="w-full h-[460px] object-cover" onerror="this.src='https://placehold.co/800x900/171717/C5A45D?text=KUSMALE+Atelier'">
+                    </div>
+                    <!-- Floating Experience Badge -->
+                    <div class="absolute -bottom-6 -right-4 sm:right-6 glass-dark p-6 rounded-2xl border border-gold/50 shadow-xl">
+                        <span class="font-cinzel text-3xl sm:text-4xl font-bold text-gold block">14+</span>
+                        <span class="text-xs uppercase tracking-widest text-cream/80">Years of Luxury<br>Excellence</span>
+                    </div>
+                </div>
+
+                <!-- Right Story, Mission & Vision -->
+                <div class="lg:col-span-7 reveal">
+                    <span class="text-xs uppercase tracking-[0.3em] text-gold font-semibold">Our Heritage & Philosophy</span>
+                    <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-cream mt-3 mb-6 leading-tight">
+                        WE TURN YOUR DREAM EVENTS INTO REALITY.
+                    </h2>
+                    <p class="text-cream/80 text-base leading-relaxed mb-6">
+                        Founded in 2012, <strong class="text-gold">KUSMALE Events</strong> was born from a singular passion: to elevate event planning into an art form. From royal destination weddings to high-profile global summits, our multidisciplinary atelier blends architectural spatial design, sensory storytelling, and white-glove hospitality.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                        <div class="glass-card p-5 rounded-2xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fa-solid fa-compass text-gold"></i>
+                                <h3 class="font-cinzel text-lg font-bold text-cream">Our Mission</h3>
+                            </div>
+                            <p class="text-xs sm:text-sm text-cream/70 leading-relaxed">
+                                To craft deeply personal, stress-free, and awe-inspiring celebrations where every detail reflects our clients' unique legacy.
+                            </p>
+                        </div>
+                        <div class="glass-card p-5 rounded-2xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fa-solid fa-eye text-gold"></i>
+                                <h3 class="font-cinzel text-lg font-bold text-cream">Our Vision</h3>
+                            </div>
+                            <p class="text-xs sm:text-sm text-cream/70 leading-relaxed">
+                                To stand as the world's most trusted luxury event house, setting global benchmarks in creativity, elegance, and execution.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Animated Statistics Counter Row -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-gold/20" id="stats-section">
+                        <div>
+                            <div class="font-cinzel text-2xl sm:text-3xl font-bold text-gold flex items-center">
+                                <span class="counter" data-target="850">0</span><span>+</span>
+                            </div>
+                            <p class="text-xs text-cream/70 uppercase tracking-wider mt-1">Events Completed</p>
+                        </div>
+                        <div>
+                            <div class="font-cinzel text-2xl sm:text-3xl font-bold text-gold flex items-center">
+                                <span class="counter" data-target="1200">0</span><span>+</span>
+                            </div>
+                            <p class="text-xs text-cream/70 uppercase tracking-wider mt-1">Happy Clients</p>
+                        </div>
+                        <div>
+                            <div class="font-cinzel text-2xl sm:text-3xl font-bold text-gold flex items-center">
+                                <span class="counter" data-target="14">0</span><span>+</span>
+                            </div>
+                            <p class="text-xs text-cream/70 uppercase tracking-wider mt-1">Years Experience</p>
+                        </div>
+                        <div>
+                            <div class="font-cinzel text-2xl sm:text-3xl font-bold text-gold flex items-center">
+                                <span class="counter" data-target="45">0</span><span>+</span>
+                            </div>
+                            <p class="text-xs text-cream/70 uppercase tracking-wider mt-1">Team Members</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         WHY CHOOSE US
+         ========================================================================== -->
+    <section class="py-20 px-4 sm:px-8 bg-obsidianDark border-y border-gold/15">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold font-semibold">The KUSMALE Advantage</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-cream mt-3">Why Choose Us?</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Benefit 1 -->
+                <div class="glass-card p-7 rounded-2xl reveal">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 border border-gold/40 flex items-center justify-center text-gold text-xl mb-5">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="font-cinzel text-lg font-bold text-cream mb-2">Creative Event Designs</h3>
+                    <p class="text-sm text-cream/70 leading-relaxed">Custom 3D mood boards, bespoke floral architecture, and avant-garde lighting concepts tailored exclusively to your story.</p>
+                </div>
+                <!-- Benefit 2 -->
+                <div class="glass-card p-7 rounded-2xl reveal">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 border border-gold/40 flex items-center justify-center text-gold text-xl mb-5">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h3 class="font-cinzel text-lg font-bold text-cream mb-2">Professional Team</h3>
+                    <p class="text-sm text-cream/70 leading-relaxed">Seasoned producers, hospitality directors, and technical engineers ensuring seamless backstage precision.</p>
+                </div>
+                <!-- Benefit 3 -->
+                <div class="glass-card p-7 rounded-2xl reveal">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 border border-gold/40 flex items-center justify-center text-gold text-xl mb-5">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <h3 class="font-cinzel text-lg font-bold text-cream mb-2">Stress-Free Planning</h3>
+                    <p class="text-sm text-cream/70 leading-relaxed">From vendor negotiations to minute-by-minute run sheets, you simply arrive as a guest of honor at your own event.</p>
+                </div>
+                <!-- Benefit 4 -->
+                <div class="glass-card p-7 rounded-2xl reveal">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 border border-gold/40 flex items-center justify-center text-gold text-xl mb-5">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-cinzel text-lg font-bold text-cream mb-2">Budget-Friendly Packages</h3>
+                    <p class="text-sm text-cream/70 leading-relaxed">Transparent tiered pricing and preferred luxury vendor partnerships that maximize value without compromising opulence.</p>
+                </div>
+                <!-- Benefit 5 -->
+                <div class="glass-card p-7 rounded-2xl reveal">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 border border-gold/40 flex items-center justify-center text-gold text-xl mb-5">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="font-cinzel text-lg font-bold text-cream mb-2">Premium Quality</h3>
+                    <p class="text-sm text-cream/70 leading-relaxed">Hand-selected couture linens, concert-grade acoustics, and Michelin-caliber culinary partners.</p>
+                </div>
+                <!-- Benefit 6 -->
+                <div class="glass-card p-7 rounded-2xl reveal">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 border border-gold/40 flex items-center justify-center text-gold text-xl mb-5">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="font-cinzel text-lg font-bold text-cream mb-2">Personalized Service</h3>
+                    <p class="text-sm text-cream/70 leading-relaxed">A dedicated senior event concierge available around the clock to bring every spontaneous inspiration to life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         MEET OUR TEAM
+         ========================================================================== -->
+    <section id="team" class="py-24 px-4 sm:px-8 bg-obsidian">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold font-semibold">The Visionaries</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-cream mt-3 mb-4">Meet Our Team</h2>
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- Member 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden text-center group reveal">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Elena Vance" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x700/171717/C5A45D?text=Elena+Vance'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5 -mt-6 relative z-10">
+                        <h3 class="font-cinzel text-lg font-bold text-cream">Elena Vance</h3>
+                        <p class="text-xs text-gold uppercase tracking-wider mt-1 mb-4">Event Director</p>
+                        <div class="flex justify-center gap-3 text-cream/60">
+                            <a href="#team" aria-label="Instagram" class="hover:text-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#team" aria-label="LinkedIn" class="hover:text-gold transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden text-center group reveal">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Julian Mercer" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x700/171717/C5A45D?text=Julian+Mercer'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5 -mt-6 relative z-10">
+                        <h3 class="font-cinzel text-lg font-bold text-cream">Julian Mercer</h3>
+                        <p class="text-xs text-gold uppercase tracking-wider mt-1 mb-4">Creative Designer</p>
+                        <div class="flex justify-center gap-3 text-cream/60">
+                            <a href="#team" aria-label="Instagram" class="hover:text-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#team" aria-label="LinkedIn" class="hover:text-gold transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden text-center group reveal">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80" alt="Sophia Laurent" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x700/171717/C5A45D?text=Sophia+Laurent'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5 -mt-6 relative z-10">
+                        <h3 class="font-cinzel text-lg font-bold text-cream">Sophia Laurent</h3>
+                        <p class="text-xs text-gold uppercase tracking-wider mt-1 mb-4">Wedding Planner</p>
+                        <div class="flex justify-center gap-3 text-cream/60">
+                            <a href="#team" aria-label="Instagram" class="hover:text-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#team" aria-label="LinkedIn" class="hover:text-gold transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="glass-card rounded-2xl overflow-hidden text-center group reveal">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Marcus Sterling" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x700/171717/C5A45D?text=Marcus+Sterling'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5 -mt-6 relative z-10">
+                        <h3 class="font-cinzel text-lg font-bold text-cream">Marcus Sterling</h3>
+                        <p class="text-xs text-gold uppercase tracking-wider mt-1 mb-4">Event Coordinator</p>
+                        <div class="flex justify-center gap-3 text-cream/60">
+                            <a href="#team" aria-label="Instagram" class="hover:text-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#team" aria-label="LinkedIn" class="hover:text-gold transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 5 -->
+                <div class="glass-card rounded-2xl overflow-hidden text-center group reveal">
+                    <div class="h-64 img-zoom-container relative">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Aria Montgomery" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x700/171717/C5A45D?text=Aria+Montgomery'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5 -mt-6 relative z-10">
+                        <h3 class="font-cinzel text-lg font-bold text-cream">Aria Montgomery</h3>
+                        <p class="text-xs text-gold uppercase tracking-wider mt-1 mb-4">Photography Director</p>
+                        <div class="flex justify-center gap-3 text-cream/60">
+                            <a href="#team" aria-label="Instagram" class="hover:text-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#team" aria-label="LinkedIn" class="hover:text-gold transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         CUSTOMER TESTIMONIALS CAROUSEL
+         ========================================================================== -->
+    <section class="py-24 px-4 sm:px-8 bg-obsidianDark border-y border-gold/15 relative">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-14 reveal">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold font-semibold">Client Stories</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-cream mt-3">Words of Appreciation</h2>
+            </div>
+
+            <!-- Carousel Container -->
+            <div class="glass-card rounded-3xl p-8 sm:p-12 relative reveal" id="testimonial-carousel">
+                <i class="fa-solid fa-quote-right text-5xl text-gold/15 absolute top-8 right-8"></i>
+                
+                <div id="testimonial-content" class="transition-opacity duration-500">
+                    <div class="flex flex-col sm:flex-row items-center gap-6 mb-6 text-center sm:text-left">
+                        <img id="test-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" alt="Client" class="w-20 h-20 rounded-full object-cover border-2 border-gold" onerror="this.src='https://placehold.co/200x200/171717/C5A45D?text=Client'">
+                        <div>
+                            <div class="flex items-center justify-center sm:justify-start gap-1 text-gold text-sm mb-1" id="test-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 id="test-name" class="font-cinzel text-xl font-bold text-cream">Camille & Alexandre Dupont</h3>
+                            <span id="test-event" class="text-xs uppercase tracking-widest text-gold">Royal Lake Como Wedding</span>
+                        </div>
+                    </div>
+                    <p id="test-quote" class="font-serif italic text-xl sm:text-2xl text-cream/90 leading-relaxed text-center sm:text-left">
+                        "KUSMALE Events transformed our dream into a breathtaking three-day celebration. Every candle, floral arch, and musical cue felt straight out of a cinema masterpiece."
+                    </p>
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="flex items-center justify-between mt-8 pt-6 border-t border-white/10">
+                    <div class="flex gap-2" id="testimonial-dots">
+                        <button onclick="setTestimonial(0)" aria-label="Slide 1" class="w-8 h-1.5 rounded-full bg-gold transition-all"></button>
+                        <button onclick="setTestimonial(1)" aria-label="Slide 2" class="w-3 h-1.5 rounded-full bg-white/25 hover:bg-gold/60 transition-all"></button>
+                        <button onclick="setTestimonial(2)" aria-label="Slide 3" class="w-3 h-1.5 rounded-full bg-white/25 hover:bg-gold/60 transition-all"></button>
+                    </div>
+                    <div class="flex gap-3">
+                        <button onclick="prevTestimonial()" aria-label="Previous Testimonial" class="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold hover:text-obsidian transition-colors">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button onclick="nextTestimonial()" aria-label="Next Testimonial" class="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold hover:text-obsidian transition-colors">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         EVENT BOOKING SECTION (INTERACTIVE FORM + VALIDATION)
+         ========================================================================== -->
+    <section id="booking" class="py-24 px-4 sm:px-8 bg-obsidian relative">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold font-semibold">Begin Your Journey</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-cream mt-3 mb-4">Reserve Your Event Date</h2>
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-4"></div>
+                <p class="text-cream/75 text-sm sm:text-base">
+                    Share your vision with our senior producers. We will prepare a bespoke proposal and schedule your private consultation within 24 hours.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 sm:p-10 md:p-12 border border-gold/30 shadow-2xl reveal">
+                <form id="booking-form" novalidate class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Full Name -->
+                        <div>
+                            <label for="book-name" class="block text-xs uppercase tracking-wider text-gold mb-2">Full Name *</label>
+                            <input type="text" id="book-name" required placeholder="e.g., Victoria Sterling" class="w-full luxury-input rounded-xl px-4 py-3.5 text-sm">
+                        </div>
+                        <!-- Phone Number -->
+                        <div>
+                            <label for="book-phone" class="block text-xs uppercase tracking-wider text-gold mb-2">Phone Number *</label>
+                            <input type="tel" id="book-phone" required placeholder="e.g., +1 (555) 234-5678" class="w-full luxury-input rounded-xl px-4 py-3.5 text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Email -->
+                        <div>
+                            <label for="book-email" class="block text-xs uppercase tracking-wider text-gold mb-2">Email Address *</label>
+                            <input type="email" id="book-email" required placeholder="victoria@example.com" class="w-full luxury-input rounded-xl px-4 py-3.5 text-sm">
+                        </div>
+                        <!-- Event Type -->
+                        <div>
+                            <label for="book-type" class="block text-xs uppercase tracking-wider text-gold mb-2">Event Type *</label>
+                            <select id="book-type" required class="w-full luxury-input rounded-xl px-4 py-3.5 text-sm">
+                                <option value="">Select Event Category</option>
+                                <option value="Wedding Planning">Wedding Planning</option>
+                                <option value="Birthday Celebrations">Birthday Celebrations</option>
+                                <option value="Corporate Events">Corporate Events</option>
+                                <option value="Engagement Ceremonies">Engagement Ceremonies</option>
+                                <option value="Concerts & Music Events">Concerts & Music Events</option>
+                                <option value="Private Parties">Private Parties</option>
+                                <option value="Product Launches">Product Launches</option>
+                                <option value="Festivals & Exhibitions">Festivals & Exhibitions</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <!-- Event Date -->
+                        <div>
+                            <label for="book-date" class="block text-xs uppercase tracking-wider text-gold mb-2">Event Date *</label>
+                            <input type="date" id="book-date" required class="w-full luxury-input rounded-xl px-4 py-3.5 text-sm">
+                        </div>
+                        <!-- Number of Guests -->
+                        <div>
+                            <label for="book-guests" class="block text-xs uppercase tracking-wider text-gold mb-2">Number of Guests *</label>
+                            <input type="number" id="book-guests" min="10" required placeholder="e.g., 150" class="w-full luxury-input rounded-xl px-4 py-3.5 text-sm">
+                        </div>
+                        <!-- Venue -->
+                        <div>
+                            <label for="book-venue" class="block text-xs uppercase tracking-wider text-gold mb-2">Preferred Venue / City</label>
+                            <input type="text" id="book-venue" placeholder="e.g., The Plaza, NY" class="w-full luxury-input rounded-xl px-4 py-3.5 text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Budget Range -->
+                        <div>
+                            <label for="book-budget" class="block text-xs uppercase tracking-wider text-gold mb-2">Estimated Budget Range</label>
+                            <select id="book-budget" class="w-full luxury-input rounded-xl px-4 py-3.5 text-sm">
+                                <option value="₹2,00,000 - ₹5,00,000">₹2,00,000 – ₹5,00,000</option>
+                                <option value="₹5,00,000 - ₹15,00,000" selected>₹5,00,000 – ₹15,00,000</option>
+                                <option value="₹15,00,000 - ₹40,00,000">₹15,00,000 – ₹40,00,000</option>
+                                <option value="₹40,00,000+">₹40,00,000+ (Ultra-Luxury Bespoke)</option>
+                            </select>
+                        </div>
+                        <!-- Package Selection -->
+                        <div>
+                            <label for="book-package" class="block text-xs uppercase tracking-wider text-gold mb-2">Package Selection</label>
+                            <select id="book-package" class="w-full luxury-input rounded-xl px-4 py-3.5 text-sm">
+                                <option value="Custom Bespoke Proposal">Custom Bespoke Proposal</option>
+                                <option value="Silver Package (₹2,00,000)">Silver Package (₹2,00,000)</option>
+                                <option value="Gold Package (₹5,00,000)">Gold Package (₹5,00,000)</option>
+                                <option value="Platinum Package (₹10,00,000+)">Platinum Package (₹10,00,000+)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Message / Special Requirements -->
+                    <div>
+                        <label for="book-message" class="block text-xs uppercase tracking-wider text-gold mb-2">Message / Special Requirements</label>
+                        <textarea id="book-message" rows="4" placeholder="Tell us about your theme, floral preferences, entertainment ideas, or special guests..." class="w-full luxury-input rounded-xl px-4 py-3.5 text-sm"></textarea>
+                    </div>
+
+                    <!-- Form Validation Error Banner -->
+                    <div id="booking-error" class="hidden p-4 rounded-xl bg-red-950/70 border border-red-500/50 text-red-200 text-sm flex items-center gap-3">
+                        <i class="fa-solid fa-circle-exclamation text-red-400"></i>
+                        <span id="booking-error-text">Please complete all required fields accurately.</span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full btn-gold py-4 rounded-full text-sm uppercase tracking-[0.25em] font-bold shadow-xl">
+                        PLAN MY EVENT
+                    </button>
+                </form>
+
+                <!-- Success Confirmation State -->
+                <div id="booking-success" class="hidden text-center py-10">
+                    <div class="w-20 h-20 rounded-full bg-gold/20 border-2 border-gold flex items-center justify-center text-gold text-3xl mx-auto mb-6 animate-bounce">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="font-cinzel text-2xl sm:text-3xl font-bold text-cream mb-3">Your Vision Is In Motion</h3>
+                    <p id="booking-success-summary" class="text-cream/80 max-w-xl mx-auto text-sm sm:text-base leading-relaxed mb-8">
+                        Thank you! Our Senior Event Director has received your inquiry and will contact you shortly with a tailored proposal.
+                    </p>
+                    <button onclick="resetBookingForm()" class="btn-outline-gold px-8 py-3 rounded-full text-xs uppercase tracking-widest">
+                        Submit Another Inquiry
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT SECTION + MAP + WHATSAPP
+         ========================================================================== -->
+    <section id="contact" class="py-24 px-4 sm:px-8 bg-obsidianDark border-t border-gold/15">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold font-semibold">Get In Touch</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-cream mt-3 mb-4">Visit Our Design Atelier</h2>
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Contact Details & Map -->
+                <div class="lg:col-span-6 space-y-6 reveal">
+                    <div class="glass-card p-7 rounded-2xl space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-full bg-gold/15 border border-gold/40 flex items-center justify-center text-gold shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-cinzel font-bold text-cream">Flagship Atelier</h3>
+                                <p class="text-sm text-cream/75 mt-1">742 Fifth Avenue, Penthouse Suite 1800, New York, NY 10019</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-full bg-gold/15 border border-gold/40 flex items-center justify-center text-gold shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-cinzel font-bold text-cream">Direct Concierge</h3>
+                                <p class="text-sm text-cream/75 mt-1">+1 (212) 555-0198 &bull; +1 (212) 555-0144</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-full bg-gold/15 border border-gold/40 flex items-center justify-center text-gold shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-cinzel font-bold text-cream">Email Inquiries</h3>
+                                <p class="text-sm text-cream/75 mt-1">concierge@kusmaleevents.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-full bg-gold/15 border border-gold/40 flex items-center justify-center text-gold shrink-0">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-cinzel font-bold text-cream">Consultation Hours</h3>
+                                <p class="text-sm text-cream/75 mt-1">Mon – Sat: 10:00 AM – 7:00 PM (Private Sunday Appointments)</p>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp & Socials -->
+                        <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                            <a href="https://wa.me/12125550198?text=Hello%20KUSMALE%20Events!%20I%20would%20like%20to%20inquire%20about%20planning%20an%20event." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#25D366]/20 border border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-obsidian font-semibold text-xs uppercase tracking-wider transition-all">
+                                <i class="fa-brands fa-whatsapp text-base"></i>
+                                <span>WhatsApp Concierge</span>
+                            </a>
+
+                            <div class="flex items-center gap-3">
+                                <a href="#contact" aria-label="Instagram" class="w-9 h-9 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold hover:text-obsidian transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#contact" aria-label="Pinterest" class="w-9 h-9 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold hover:text-obsidian transition-colors"><i class="fa-brands fa-pinterest-p"></i></a>
+                                <a href="#contact" aria-label="Facebook" class="w-9 h-9 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold hover:text-obsidian transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#contact" aria-label="YouTube" class="w-9 h-9 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold hover:text-obsidian transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Embedded Google Maps -->
+                    <div class="rounded-2xl overflow-hidden border border-gold/30 h-60 shadow-lg">
+                        <iframe title="KUSMALE Events Location Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.972914074896!2d-73.97654232346256!3d40.76261493451412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258f07d5da561%3A0x61f6aa300ba8339d!2s5th%20Ave%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0; filter: invert(90%) hue-rotate(180deg) contrast(90%);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <!-- Quick Contact Form -->
+                <div class="lg:col-span-6 glass-card p-8 rounded-2xl reveal">
+                    <h3 class="font-cinzel text-2xl font-bold text-cream mb-2">Send a Direct Message</h3>
+                    <p class="text-sm text-cream/70 mb-6">Have a quick question about availability, press inquiries, or vendor partnerships?</p>
+                    
+                    <form id="quick-contact-form" class="space-y-5">
+                        <div>
+                            <label for="contact-name" class="block text-xs uppercase tracking-wider text-gold mb-2">Your Name *</label>
+                            <input type="text" id="contact-name" required placeholder="Enter your name" class="w-full luxury-input rounded-xl px-4 py-3 text-sm">
+                        </div>
+                        <div>
+                            <label for="contact-email" class="block text-xs uppercase tracking-wider text-gold mb-2">Email Address *</label>
+                            <input type="email" id="contact-email" required placeholder="Enter your email" class="w-full luxury-input rounded-xl px-4 py-3 text-sm">
+                        </div>
+                        <div>
+                            <label for="contact-subject" class="block text-xs uppercase tracking-wider text-gold mb-2">Subject</label>
+                            <input type="text" id="contact-subject" placeholder="Consultation / Press / Partnership" class="w-full luxury-input rounded-xl px-4 py-3 text-sm">
+                        </div>
+                        <div>
+                            <label for="contact-msg" class="block text-xs uppercase tracking-wider text-gold mb-2">Message *</label>
+                            <textarea id="contact-msg" rows="4" required placeholder="How can we assist you?" class="w-full luxury-input rounded-xl px-4 py-3 text-sm"></textarea>
+                        </div>
+                        <button type="submit" class="w-full btn-gold py-3.5 rounded-full text-xs uppercase tracking-widest font-bold">
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="quick-contact-feedback" class="hidden mt-4 p-4 rounded-xl bg-gold/15 border border-gold text-gold text-sm text-center">
+                        <i class="fa-solid fa-circle-check mr-2"></i> Message sent! Our team will reply shortly.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         FOOTER
+         ========================================================================== -->
+    <footer class="bg-[#0A0A0A] pt-20 pb-10 px-4 sm:px-8 border-t border-gold/25">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-14 border-b border-white/10">
+                <!-- Brand Col -->
+                <div class="lg:col-span-4">
+                    <a href="#home" class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-full border border-gold flex items-center justify-center bg-obsidian">
+                            <span class="font-cinzel text-lg font-bold text-gold">K</span>
+                        </div>
+                        <div>
+                            <span class="font-cinzel text-xl font-bold tracking-[0.2em] text-cream block leading-none">KUSMALE</span>
+                            <span class="text-[10px] tracking-[0.32em] text-gold uppercase block mt-1">Bespoke Events</span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-cream/65 leading-relaxed mb-6">
+                        Crafting extraordinary weddings, corporate galas, concerts, and private celebrations across the globe with unmatched elegance and precision.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#home" aria-label="Instagram" class="w-9 h-9 rounded-full bg-white/5 hover:bg-gold hover:text-obsidian flex items-center justify-center text-cream/80 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#home" aria-label="Facebook" class="w-9 h-9 rounded-full bg-white/5 hover:bg-gold hover:text-obsidian flex items-center justify-center text-cream/80 transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#home" aria-label="Pinterest" class="w-9 h-9 rounded-full bg-white/5 hover:bg-gold hover:text-obsidian flex items-center justify-center text-cream/80 transition-colors"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="#home" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-white/5 hover:bg-gold hover:text-obsidian flex items-center justify-center text-cream/80 transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="lg:col-span-2">
+                    <h4 class="font-cinzel text-sm font-bold uppercase tracking-widest text-gold mb-5">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-cream/70">
+                        <li><a href="#home" class="hover:text-gold transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-gold transition-colors">About Us</a></li>
+                        <li><a href="#events" class="hover:text-gold transition-colors">Upcoming Events</a></li>
+                        <li><a href="#packages" class="hover:text-gold transition-colors">Packages</a></li>
+                        <li><a href="#gallery" class="hover:text-gold transition-colors">Gallery</a></li>
+                        <li><a href="#booking" class="hover:text-gold transition-colors">Book an Event</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services Links -->
+                <div class="lg:col-span-3">
+                    <h4 class="font-cinzel text-sm font-bold uppercase tracking-widest text-gold mb-5">Our Services</h4>
+                    <ul class="space-y-3 text-sm text-cream/70">
+                        <li><a href="#services" class="hover:text-gold transition-colors">Wedding Planning</a></li>
+                        <li><a href="#services" class="hover:text-gold transition-colors">Corporate Events</a></li>
+                        <li><a href="#services" class="hover:text-gold transition-colors">Concerts & Music Events</a></li>
+                        <li><a href="#services" class="hover:text-gold transition-colors">Birthday Celebrations</a></li>
+                        <li><a href="#services" class="hover:text-gold transition-colors">Product Launches</a></li>
+                        <li><a href="#services" class="hover:text-gold transition-colors">Private Parties</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="lg:col-span-3">
+                    <h4 class="font-cinzel text-sm font-bold uppercase tracking-widest text-gold mb-5">Luxury Digest</h4>
+                    <p class="text-sm text-cream/65 mb-4">Subscribe for VIP event invitations, seasonal design trends, and exclusive showcase passes.</p>
+                    <form id="newsletter-form" class="flex flex-col gap-3">
+                        <input type="email" id="newsletter-email" required placeholder="Your email address" class="w-full luxury-input rounded-xl px-4 py-3 text-sm">
+                        <button type="submit" class="btn-gold py-3 rounded-xl text-xs uppercase tracking-widest font-bold">
+                            Subscribe
+                        </button>
+                    </form>
+                    <p id="newsletter-msg" class="hidden text-xs text-gold mt-2"><i class="fa-solid fa-check mr-1"></i> Welcome to the KUSMALE Inner Circle.</p>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cream/50">
+                <p>&copy; 2026 KUSMALE Events Luxury Management. All Rights Reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#home" class="hover:text-gold transition-colors">Privacy Policy</a>
+                    <a href="#home" class="hover:text-gold transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         GALLERY LIGHTBOX MODAL
+         ========================================================================== -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[100] hidden bg-obsidian/95 backdrop-blur-lg flex items-center justify-center p-4" onclick="closeLightbox(event)">
+        <button onclick="closeLightbox(event, true)" aria-label="Close Lightbox" class="absolute top-6 right-6 w-12 h-12 rounded-full border border-gold/50 text-gold hover:bg-gold hover:text-obsidian flex items-center justify-center text-xl transition-colors">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-4xl w-full text-center" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Gallery Preview" class="max-h-[78vh] mx-auto rounded-2xl border border-gold/40 shadow-2xl object-contain">
+            <h3 id="lightbox-caption" class="font-cinzel text-xl text-gold mt-4"></h3>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         SERVICE DETAILS MODAL
+         ========================================================================== -->
+    <div id="service-modal" class="fixed inset-0 z-[100] hidden bg-obsidian/90 backdrop-blur-md flex items-center justify-center p-4" onclick="closeServiceModal(event)">
+        <div class="glass-card max-w-xl w-full rounded-3xl overflow-hidden border border-gold/40 shadow-2xl relative" onclick="event.stopPropagation()">
+            <button onclick="closeServiceModal(event, true)" aria-label="Close Modal" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-obsidian/80 border border-gold/40 text-gold hover:bg-gold hover:text-obsidian flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="service-modal-img" src="" alt="Service Detail" class="w-full h-56 object-cover">
+            <div class="p-7">
+                <span class="text-xs uppercase tracking-widest text-gold font-semibold">Bespoke Service</span>
+                <h3 id="service-modal-title" class="font-cinzel text-2xl font-bold text-cream mt-1 mb-3"></h3>
+                <p id="service-modal-desc" class="text-sm text-cream/80 leading-relaxed mb-6"></p>
+                <button id="service-modal-cta" class="w-full btn-gold py-3.5 rounded-full text-xs uppercase tracking-widest font-bold">
+                    Inquire About This Service
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         VANILLA JAVASCRIPT (INTERACTIVITY, ANIMATIONS, FILTERS, VALIDATION)
+         ========================================================================== -->
+    <script>
+        // 1. Page Preloader Reveal
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+            }, 600);
+            initParticles();
+        });
+
+        // 2. Sticky Navbar Glassmorphism on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-dark', 'py-3', 'shadow-xl');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('glass-dark', 'py-3', 'shadow-xl');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // 3. Mobile Hamburger Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            });
+        });
+
+        // 4. Intersection Observer for Scroll-Triggered Reveal & Counters
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Animated Statistics Counters
+        let countersStarted = false;
+        const statsSection = document.getElementById('stats-section');
+        const counterObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !countersStarted) {
+                countersStarted = true;
+                document.querySelectorAll('.counter').forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 1800;
+                    const stepTime = 25;
+                    const steps = duration / stepTime;
+                    const increment = target / steps;
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            counter.innerText = target;
+                            clearInterval(timer);
+                        } else {
+                            counter.innerText = Math.floor(current);
+                        }
+                    }, stepTime);
+                });
+            }
+        }, { threshold: 0.4 });
+
+        if (statsSection) counterObserver.observe(statsSection);
+
+        // 5. Floating Golden Particles Canvas in Hero
+        function initParticles() {
+            const canvas = document.getElementById('gold-particles');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            const particles = Array.from({ length: 42 }, () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * 2.2 + 0.6,
+                speedY: -(Math.random() * 0.45 + 0.15),
+                speedX: (Math.random() - 0.5) * 0.3,
+                alpha: Math.random() * 0.6 + 0.2
+            }));
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => {
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    if (p.y < 0) p.y = height;
+                    if (p.x < 0) p.x = width;
+                    if (p.x > width) p.x = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(197, 164, 93, ${p.alpha})`;
+                    ctx.fill();
+                });
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+        }
+
+        // 6. Upcoming Events Category Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const eventCards = document.querySelectorAll('.event-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update Active Pill Styling
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-gold', 'text-obsidian', 'shadow-lg');
+                    b.classList.add('glass-dark', 'text-cream');
+                });
+                btn.classList.add('bg-gold', 'text-obsidian', 'shadow-lg');
+                btn.classList.remove('glass-dark', 'text-cream');
+
+                const filter = btn.getAttribute('data-filter');
+                eventCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'flex';
+                        card.animate([{ opacity: 0, transform: 'scale(0.96)' }, { opacity: 1, transform: 'scale(1)' }], { duration: 350, easing: 'ease-out' });
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 7. Interactive Service Modal
+        function openServiceModal(title, desc, imgSrc) {
+            document.getElementById('service-modal-title').innerText = title;
+            document.getElementById('service-modal-desc').innerText = desc;
+            document.getElementById('service-modal-img').src = imgSrc;
+            document.getElementById('service-modal-cta').onclick = () => {
+                closeServiceModal(null, true);
+                prefillBooking(title, '');
+            };
+            document.getElementById('service-modal').classList.remove('hidden');
+        }
+
+        function closeServiceModal(e, force = false) {
+            if (force || e.target.id === 'service-modal') {
+                document.getElementById('service-modal').classList.add('hidden');
+            }
+        }
+
+        // 8. Gallery Lightbox
+        function openLightbox(imgSrc, caption) {
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-caption').innerText = caption;
+            document.getElementById('lightbox-modal').classList.remove('hidden');
+        }
+
+        function closeLightbox(e, force = false) {
+            if (force || e.target.id === 'lightbox-modal') {
+                document.getElementById('lightbox-modal').classList.add('hidden');
+            }
+        }
+
+        // 9. Testimonials Carousel
+        const testimonials = [
+            {
+                name: "Camille & Alexandre Dupont",
+                event: "Royal Lake Como Wedding",
+                img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
+                quote: "“KUSMALE Events transformed our dream into a breathtaking three-day celebration. Every candle, floral arch, and musical cue felt straight out of a cinema masterpiece.”"
+            },
+            {
+                name: "Jonathan Vance-Kerr",
+                event: "CEO, Chronos Luxury Timepieces",
+                img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
+                quote: "“Our global product unveil in Manhattan required military-grade precision paired with haute-couture aesthetics. KUSMALE exceeded every expectation.”"
+            },
+            {
+                name: "Priya & Devansh Kapoor",
+                event: "Grand Palace Sangeet & Reception",
+                img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80",
+                quote: "“From orchestrating 400 international guests to designing a floating crystal stage, Elena and her team gave us a stress-free, unforgettable week.”"
+            }
+        ];
+
+        let currentTestimonial = 0;
+
+        function renderTestimonial(index) {
+            const content = document.getElementById('testimonial-content');
+            content.style.opacity = '0';
+            setTimeout(() => {
+                const item = testimonials[index];
+                document.getElementById('test-name').innerText = item.name;
+                document.getElementById('test-event').innerText = item.event;
+                document.getElementById('test-img').src = item.img;
+                document.getElementById('test-quote').innerText = item.quote;
+
+                const dots = document.getElementById('testimonial-dots').children;
+                Array.from(dots).forEach((dot, i) => {
+                    dot.className = i === index
+                        ? 'w-8 h-1.5 rounded-full bg-gold transition-all'
+                        : 'w-3 h-1.5 rounded-full bg-white/25 hover:bg-gold/60 transition-all';
+                });
+                content.style.opacity = '1';
+            }, 250);
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            renderTestimonial(currentTestimonial);
+        }
+
+        function prevTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            renderTestimonial(currentTestimonial);
+        }
+
+        function setTestimonial(index) {
+            currentTestimonial = index;
+            renderTestimonial(index);
+        }
+
+        // Auto-advance testimonials every 7 seconds
+        setInterval(nextTestimonial, 7000);
+
+        // 10. Seamless Booking Prefill Helpers
+        function prefillBooking(eventType, eventName) {
+            const typeSelect = document.getElementById('book-type');
+            const msgField = document.getElementById('book-message');
+            if (eventType) typeSelect.value = eventType;
+            if (eventName) msgField.value = `I would like to reserve passes / inquire about: ${eventName}.`;
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function selectPackage(packageName) {
+            const pkgSelect = document.getElementById('book-package');
+            pkgSelect.value = packageName;
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 11. Booking Form Validation & Submission
+        const bookingForm = document.getElementById('booking-form');
+        const bookingError = document.getElementById('booking-error');
+        const bookingSuccess = document.getElementById('booking-success');
+
+        // Set minimum date to today
+        const dateInput = document.getElementById('book-date');
+        if (dateInput) {
+            dateInput.min = new Date().toISOString().split('T')[0];
+        }
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('book-name').value.trim();
+            const phone = document.getElementById('book-phone').value.trim();
+            const email = document.getElementById('book-email').value.trim();
+            const type = document.getElementById('book-type').value;
+            const date = document.getElementById('book-date').value;
+            const guests = document.getElementById('book-guests').value;
+            const pkg = document.getElementById('book-package').value;
+
+            const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+            if (!name || !phone || !emailValid || !type || !date || !guests) {
+                bookingError.classList.remove('hidden');
+                document.getElementById('booking-error-text').innerText = !emailValid && email
+                    ? 'Please enter a valid email address.'
+                    : 'Please fill in all required fields marked with *.';
+                return;
+            }
+
+            bookingError.classList.add('hidden');
+            bookingForm.classList.add('hidden');
+            bookingSuccess.classList.remove('hidden');
+            document.getElementById('booking-success-summary').innerHTML = `
+                Thank you, <strong class="text-gold">${name}</strong>! Your inquiry for <strong class="text-cream">${type}</strong> on <strong class="text-cream">${date}</strong> (${guests} guests, ${pkg}) has been registered. Our Senior Event Director will contact you at <span class="underline">${email}</span> within 24 hours.
+            `;
+        });
+
+        function resetBookingForm() {
+            bookingForm.reset();
+            bookingSuccess.classList.add('hidden');
+            bookingForm.classList.remove('hidden');
+        }
+
+        // 12. Quick Contact Form & Newsletter Handlers
+        document.getElementById('quick-contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            e.target.reset();
+            const feedback = document.getElementById('quick-contact-feedback');
+            feedback.classList.remove('hidden');
+            setTimeout(() => feedback.classList.add('hidden'), 5000);
+        });
+
+        document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            e.target.reset();
+            const msg = document.getElementById('newsletter-msg');
+            msg.classList.remove('hidden');
+            setTimeout(() => msg.classList.add('hidden'), 5000);
+        });
+    </script>
+</body>
+</html>
